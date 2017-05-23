@@ -29,32 +29,7 @@ export class BootstrapYearCalendarComponent implements AfterViewInit {
   private defaultOptions: BootstrapYearCalendarModel = {
     allowOverlap: true,
     alwaysHalfDay: false,
-    contextMenuItems: [
-      // {
-      //   text: 'View',
-      //   click: (e) => {
-      //     this.selectedEvent = e.event;
-      //     this.refreshView.next();
-      //   },
-      //   subMenu: []
-      // },
-      // {
-      //   text: 'Edit',
-      //   click: (e) => {
-      //     this.selectedEvent = e.event;
-      //     this.refreshEdit.next();
-      //   },
-      //   subMenu: []
-      // },
-      // {
-      //   text: 'Delete',
-      //   click: (e) => {
-      //     this.selectedEvent = e.event;
-      //     this.refreshDelete.next();
-      //   },
-      //   subMenu: []
-      // }
-    ],
+    contextMenuItems: [ ],
     dataSource: [],
     disabledDays: [],
     displayWeekNumber: false,
@@ -63,7 +38,7 @@ export class BootstrapYearCalendarComponent implements AfterViewInit {
     language: 'en',
     maxDate: null,
     minDate: null,
-    mouseOnDayPopUp: false,
+    mouseOnDayPopUp: true,
     roundRangeLimits: false,
     startYear: moment(new Date).year(),
     style: 'border'

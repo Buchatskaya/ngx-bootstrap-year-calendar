@@ -1,28 +1,131 @@
-# Ngx-Bootstrap-Year-Calendar
+# ngx-bootstrap-year-calendar
+Angular 2/4 wrapper for jquery bootstrap-year-calendar
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
 
-## Development server
+## Installation
+>npm install ngx-bootstrap-year-calendar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Usage Example
+app.module.ts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+```javascript
+import { NgModule } from "@angular/core";
+import { BrowserModule} from "@angular/platform-browser";
+import { HttpModule } from "@angular/http";
+import { AppComponent } from "./app.component";
+import { BootstrapYearCalendarModule } from "ngx-bootstrap-year-calendar";
 
-## Build
+@NgModule({
+    imports: [BrowserModule, HttpModule, BootstrapYearCalendarModule],
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+app.component.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```javascript
+ import {Component} from '@angular/core';
+ import { BootstrapYearCalendar } from "ngx-bootstrap-year-calendar";
+ @Component({
+     selector: 'app',
+     templateUrl: 'app.component.html'
+ })
+ export class AppComponent {
 
-## Running unit tests
+    private bootstrapYearCalendarOptions: BootstrapYearCalendar = {
+        dataSource: [
+            {
+            id: 1,
+            name: 'Object-based radical open system',
+            startDate: new Date('2017-05-21T00:34:15Z'),
+            endDate: new Date('2017-07-12T21:26:29Z')
+            }, {
+            id: 2,
+            name: 'Phased mobile firmware',
+            startDate: new Date('2017-05-19T19:19:20Z'),
+            endDate: new Date('2017-06-28T17:43:06Z')
+            }, {
+            id: 3,
+            name: 'Networked actuating access',
+            startDate: new Date('2017-06-04T16:37:28Z'),
+            endDate: new Date('2017-05-31T19:28:32Z')
+            }
+        ],
+  };
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ }
+```
 
-## Running end-to-end tests
+app.component.html
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+```html
+<app-bootstrap-year-calendar
+[options]="bootstrapYearCalendarOptions"
+(clickDay)="onClickDay($event)"
+(dayContextMenu)="onDayContextMenu($event)"
+(selectRange)="onSelectRange($event)"></app-bootstrap-year-calendar>
+```
 
-## Further help
+## Bootstrap Year Calendar Options
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+  {
+    allowOverlap: boolean;
+    alwaysHalfDay: boolean;
+    contextMenuItems: Array<//see context menu>;
+    dataSource: //see datasource;
+    disabledDays: Date[];
+    displayWeekNumber: boolean;
+    enableContextMenu: boolean;
+    enableRangeSelection: boolean;
+    language: string;
+    maxDate: Date;
+    minDate: Date;
+    mouseOnDayPopUp: boolean; //toggle popover on mouse hover
+    roundRangeLimits: boolean;
+    startYear: number;
+    style: string;
+  }
+  ```
+
+### Context Menu
+```
+ {
+    text: string;
+    click: (dataSourceElement: any) => void;
+    subMenu: [
+        {
+            text: string;
+            click: (dataSourceElement: any) => void;
+            subMenu: []
+        }
+    ];
+  }
+```
+
+### Datasource
+```
+ {
+    id: number;
+    name: string;
+    color: string; //optional
+    startDate: Date;
+    endDate: Date;
+  }
+```
+
+### Events
+``` javascript
+clickDay(e)
+dayContextMenu(e)
+mouseOnDay(e)
+mouseOutDay(e)
+renderEnd(e)
+selectRange(e)
+```
+
+[Jquery Bootstrap Year Calendar Documentation](https://www.google.com "Jquery Bootstrap year calendar Page")

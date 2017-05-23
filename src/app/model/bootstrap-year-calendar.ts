@@ -19,7 +19,7 @@ export class BootstrapYearCalendarModel {
 export class BootstrapYearCalendarDataSource {
   id: number;
   name: string;
-  color: string;
+  color?: string;
   startDate: Date;
   endDate: Date;
 }
