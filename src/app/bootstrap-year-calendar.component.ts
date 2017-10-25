@@ -13,8 +13,7 @@ const TEMPLATE = '<div class="calendar"></div>';
 
 @Component({
   selector: 'app-bootstrap-year-calendar',
-  template: TEMPLATE,
-  styleUrls: ['./bootstrap-year-calendar.component.scss']
+  template: TEMPLATE
 })
 export class BootstrapYearCalendarComponent implements AfterViewInit {
 
