@@ -2,11 +2,12 @@ import {
   Component, AfterViewInit, ElementRef, OnDestroy,
   Input, ChangeDetectorRef, Output, EventEmitter, ViewChild
 } from '@angular/core';
-import { BootstrapYearCalendarModel } from './model/bootstrap-year-calendar';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription, Subject } from 'rxjs/Rx';
+import {BootstrapYearCalendarModel} from './model/bootstrap-year-calendar';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Subscription, Subject} from 'rxjs/Rx';
 import 'bootstrap-year-calendar';
 import * as moment from 'moment';
+
 declare var jQuery: any;
 
 const TEMPLATE = '<div class="calendar"></div>';
@@ -28,7 +29,7 @@ export class BootstrapYearCalendarComponent implements AfterViewInit {
   private defaultOptions: BootstrapYearCalendarModel = {
     allowOverlap: true,
     alwaysHalfDay: false,
-    contextMenuItems: [ ],
+    contextMenuItems: [],
     dataSource: [],
     disabledDays: [],
     displayWeekNumber: false,
@@ -43,12 +44,14 @@ export class BootstrapYearCalendarComponent implements AfterViewInit {
     style: 'border'
   };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngAfterViewInit() {
     if (this.options) {
       this.options = Object.assign(this.defaultOptions, this.options);
-    };
+    }
+    ;
     jQuery('.calendar').calendar(this.options);
     jQuery('.calendar').clickDay(e => this.clickDay.emit(e));
     jQuery('.calendar').mouseOnDay(e => {
@@ -79,8 +82,12 @@ export class BootstrapYearCalendarComponent implements AfterViewInit {
       }
       this.mouseOutDay.emit(e);
     });
-    jQuery('.calendar').renderEnd(e => { this.renderEnd.emit(e); });
-    jQuery('.calendar').selectRange(e => { this.selectRange.emit(e); });
+    jQuery('.calendar').renderEnd(e => {
+      this.renderEnd.emit(e);
+    });
+    jQuery('.calendar').selectRange(e => {
+      this.selectRange.emit(e);
+    });
   }
 
 }
