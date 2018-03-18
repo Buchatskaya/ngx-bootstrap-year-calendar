@@ -17,4 +17,4 @@ import { BootstrapYearCalendarComponent } from './bootstrap-year-calendar.compon
   providers: [],
   bootstrap: [BootstrapYearCalendarComponent]
 })
-export class BootstrapYearCalendarModule { }
+export class BootstrapYearCalendarModule {}
